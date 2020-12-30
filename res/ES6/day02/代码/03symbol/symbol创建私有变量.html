@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Student(name,sex){
+				this.name = name;
+				this.sex = sex;
+				const studentNum = 123456789;
+				var sn  = Symbol('studentNum')
+				this[sn] = studentNum;
+				this.getStudentNum = function(){
+					return this[sn]
+				}
+			}
+			
+			
+			var s1 = new Student('小明',"男")
+			console.log(s1)
+		</script>
+	</body>
+</html>

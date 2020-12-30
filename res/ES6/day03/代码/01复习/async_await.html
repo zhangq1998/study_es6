@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//浏览器自带封装好的ajax
+			//3c497450d8e44c5280421ceaba1db581
+			var httpUrl1 = "https://free-api.heweather.net/s6/weather/now?location=广州&key=3c497450d8e44c5280421ceaba1db581"
+			// fetch(httpUrl1).then(function(res){
+			// 	return res.json()
+			// }).then(function(res){
+			// 	console.log(res)
+			// })
+			async function req() {
+				//首先请求小说列表
+				let res = await fetch(httpUrl1);
+				let jsonObj = await res.json()
+				console.log(jsonObj)
+			}
+			
+			req()
+			
+		</script>
+	</body>
+</html>

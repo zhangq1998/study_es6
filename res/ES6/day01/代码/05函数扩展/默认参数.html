@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function fn(a,b){
+				//曾经实现默认参数的方式
+				a = a?a:0;
+				b = b?b:0;
+				return a+b
+			}
+			
+			var result = fn()
+			console.log(result)
+			
+			
+			function add(a=0,b=0){
+				return a+b;
+			}
+			var result2 = add()
+			console.log(result2)
+			
+			
+			var x = 3;
+			function cba(x=4,y=x){
+				console.log(x) //4
+				console.log(y) //4
+			}
+			cba()
+			
+			function tt(a=4,y='x'){
+				console.log(y)
+			}
+			tt()
+		</script>
+	</body>
+</html>

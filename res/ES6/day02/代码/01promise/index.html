@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<!-- 
+			1/获取电影的分类列表，可以渲染出电影的分类
+			2/根据电影分类，获取电影的列表
+			3/根据电影名称，获取电影的详细信息
+			4/根据电影的详细信息，获取电影的评论内容
+		-->
+		
+		<script type="text/javascript">
+			//promise的改善的原因
+			getAjax('moviesAll',function({
+				//获取所有的分类
+				getAjax('moviesClass',function({
+					//根据分类获取,该分类下的电影
+					getAjax('moviesName',function({
+						//通过电影获取详细信息
+						getAjax('moviesPinglun',function({
+							//通过详细信息获取电影
+						})
+					})
+				})
+			})
+			
+			
+			var p1 =  $.get("url")
+			p1.then(function(){
+				
+			})
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			class LcPromise extends Promise{
+				success(resovle,reject){
+					this.then(resovle,reject)
+				}
+				fail(reject){
+					this.catch(reject)
+				}
+			}
+			
+			var p1 = new LcPromise(function(resovle,reject){
+				if(false){
+					resovle("成功返回内容")
+				}else{
+					reject("请求失败")
+				}
+			})
+			
+			p1.success(function(res){
+				console.log(res)
+			})
+			
+			p1.fail(function(res){
+				console.log(res)
+			})
+		</script>
+	</body>
+</html>

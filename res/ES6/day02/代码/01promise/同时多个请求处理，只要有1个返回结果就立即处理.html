@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var p1 = new Promise(function(resolve,reject){
+				setTimeout(function(){
+					resolve("450毫秒后执行")
+				},450)
+			})
+			var p2 = new Promise(function(resolve,reject){
+				setTimeout(function(){
+					resolve("300毫秒后执行")
+				},300)
+			})
+			var p3 = new Promise(function(resolve,reject){
+				setTimeout(function(){
+					resolve("400毫秒后执行")
+				},400)
+			})
+			var p4 = new Promise(function(resolve,reject){
+				setTimeout(function(){
+					resolve("500毫秒后执行")
+				},500)
+			})
+			
+			var arr = [p1,p2,p3,p4]
+			//有多个异步操作,只有1个返回给结果,就立即执行.
+			var result = Promise.race(arr)
+			result.then(function(res){
+				console.log(res)
+			})
+		</script>
+	</body>
+</html>

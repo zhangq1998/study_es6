@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//resolve -->解决问题 --->事情异步成功完成
+			//reject -->  拒绝 --->事情异步操作失败
+			var p1 = new Promise(function(resolve,reject){
+				if(true){
+					resolve("数据请求完成！")
+				}else{
+					reject("数据请求失败")
+				}
+			})
+			console.log(p1)
+			
+			p1.then(function(res){
+				console.log(res)
+			},function(err){
+				console.log(err)
+			})
+			
+			p1.catch(function(err){
+				console.log("catch:",err)
+			})
+			
+			//finally是没有参数的
+			p1.finally(function(res){
+				console.log("finally:",res)
+			})
+			
+		</script>
+		
+	</body>
+</html>

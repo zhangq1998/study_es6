@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			const a = Symbol('a')
+			const b = Symbol('b')
+			
+			console.log(typeof b)
+			console.log(b)
+			console.log(a===b)
+			
+			
+			let student = {
+				username:"小明",
+				sex:"男",
+				[a]:"我是小明",
+				_studentNum:"123456"
+			}
+			student[b] = "今天入冬";
+			
+			for (let key in student) {
+				console.log(key)
+			}
+			console.log(student)
+			
+			var result = Object.getOwnPropertySymbols(student)
+			console.log(result)
+			
+			for(var i = 0;i<result.length;i++){
+				
+				console.log(student[result[i]])
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+	</head>
+	<body>
+		<!-- 同时请求多个数据，并且在多个数据完成之后在执行什么代码 -->
+		<img class="loading" src="img/loading1.gif" >
+		<div class="progress">
+		  <div class="progress-bar progress-bar-striped active"  style="width: 0%">
+		    
+		  </div>
+		</div>
+		<script src="js/jquery-1.11.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			/* num = 0;
+			for(let i=0;i<8;i++){
+				let img = new Image()
+				img.src = "img/"+(i+1)+".jpg";
+				img.onload = function(){
+					console.log(img.src)
+					num++;
+					var percent = parseInt(num/8*100)
+					document.querySelector(".progress-bar").style.width = percent + "%";
+					if(num==8){
+						console.log('加载完毕')
+						$('.loading,.progress').remove()
+					}
+				}
+			} */
+			
+			
+			
+		</script>
+		
+		<script type="text/javascript">
+			num = 0;
+			var pList = []
+			for(let i=0;i<8;i++){
+				
+				let p = new Promise(function(resovle,reject){
+					let img = new Image()
+					img.src = "img/"+(i+1)+".jpg";
+					img.onload = function(){
+						resovle(img)
+					}
+				})
+				//图片加载修改进度条
+				p.then(function(){
+					num++;
+					var percent = parseInt(num/8*100)
+					document.querySelector(".progress-bar").style.width = percent + "%";
+				})
+				pList.push(p)
+				
+			}
+			
+			//处理所有图片完成之后的事情
+			let pAll = Promise.all(pList)
+			pAll.then(function(res){
+				console.log("所有图片加载完毕")
+				console.log(res)
+				$('.loading,.progress').remove()
+			})
+		</script>
+	</body>
+</html>
